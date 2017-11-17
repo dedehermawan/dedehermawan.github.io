@@ -20,7 +20,7 @@ Selanjutnya, Install dependecy
 gem install bundler
 bundle install
 {% endcodeblock %}
-Install theme dafault dari Octopress
+Install theme default dari Octopress
 {% codeblock %}
 rake install
 {% endcodeblock %}
@@ -35,7 +35,6 @@ Untuk melihat hasil pembuatan post kita di browser caranya masukan perintah ini 
 {% codeblock %}
 rake preview
 {% endcodeblock %}
-Apabila muncul kata-kata `>>> Compass is watching for changes. Press Ctrl-C to Stop.` di terminal  
 Selanjutnya akses di browser dengan alamat `http://localhost:4000`  
 untuk keluar dari mode preview tekan tombol Ctrl+c di keyboard  
 ### Deploy ke Github
@@ -44,7 +43,7 @@ Github menggunakan branch master sebagai public directory di web server, tapi di
 {% codeblock %}
 rake setup_github_pages
 {% endcodeblock %}
-Perintah tersebut akan memintamu memasukaan alamat URL repo github kamu, (sebagai contoh masukan `git@github.com:username/username/github.io.git`)
+Perintah tersebut akan memintamu memasukan alamat URL repo github kamu, tinggal pilih mau menggunakan SSH atau HTTPS, contoh saya menggunakan yang HTTPS `https://github.com/username/username.github.io`
 Lalu jalankan
 {% codeblock %}
 rake generate
