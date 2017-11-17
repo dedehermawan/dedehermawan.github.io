@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
+  <title>Cara Membuat Blog Dengan Octopress - My Octopress Blog</title>
   <meta name="author" content="Dede Hermawan">
 
   
-  <meta name="description" content="Tentang SSH Menggunakan SSH kamu dapat terhubung dan mengotentifikasi untuk meremote server dan service, dengan SSH keys, kamu dapat terhubung ke &hellip;">
+  <meta name="description" content="Sebelum mulai pastikan sistem anda
+1. Sudah terinstall Git
+2. Sudah terinstall ruby Install Octopress Buka terminal, lalu git clone dari repo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dedehermawan.github.io/">
+  <link rel="canonical" href="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -63,121 +65,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/11/17/koneksi-ke-github-dengan-ssh/">Koneksi Ke Github Dengan SSH</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-17T23:02:54+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:02 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Tentang SSH</h3>
-
-<p>Menggunakan SSH kamu dapat terhubung dan mengotentifikasi untuk meremote server dan service, dengan SSH keys, kamu dapat terhubung ke Github tanpa harus menginputkan username dan password setiap kali mengunjunginya.</p>
-
-<h3>Cek ketersediaan SSH keys</h3>
-
-<p>Buka terminal<br/>
-Ketikkan <code>ls -al ~/.ssh</code> untuk melihat apakah SSH keys sudah tersedia atau belum</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ls -al ~/.ssh
-</span><span class='line'># List the file in your .ssh directory, if they exist</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Cek daftar direktori untuk melihat apakah kamu sudah mempunyai public SSH key.<br/>
-Secara default, nama file dari public keys biasanya<br/>
-* id_dsa.pub<br/>
-* idecdsa.pub<br/>
-* id_ed25519.pub<br/>
-* id.rsa.pub<br/>
-Apabila kamu tidak memiliki pasangan public dan private key, atau tidak ada satupun yang terhubung ke Github, maka langkah pertama adalah <strong>generate SSH key baru</strong><br/>
-Tapi apabila kamu memiliki pasangan public dan private key (contoh <em>id_rsa_pub</em> dan <em>id_rsa</em>) maka yang harus kamu lakukan adalah tambahkan SSH key kamu ke ss-agent</p>
-
-<h3>Generate SSH key</h3>
-
-<p>Pastekan text dibawah ini, ganti alamat emailnya dengan alamat email Github kamu</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ini akan membuat SSH key baru, dengan menggunakan email yang telah di daftarkan sebelumnya sebagai label</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Generating public/private rsa key pair.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Silakan isi pertanyaan yang muncul (passphrase bisa di kosongkan juga)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Enter a file in which to save the key (/home/you/.ssh/id_rsa): [Press enter]
-</span><span class='line'>Enter passphrase (empty for no passphrase): [Type a passphrase]
-</span><span class='line'>Enter same passphrase again: [Type passphrase again]</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Tambahkan SSH key ke ssh-agent</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>eval "$(ssh-agent -s)"
-</span><span class='line'># Agent pid 59566
-</span><span class='line'>ssh-add ~/.ssh/id_rsa</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Tambahkan SSH key ke akun Github</h3>
-
-<p>Copy dulu SSH key di <em>id_rsa_pub</em> ke clipboard.<br/>
-Login ke Github dan klik profile foto di kanan atas, lalu klik <strong>setting</strong> -> <strong>SSH and GPG keys</strong> -> <strong>New SSH key</strong> atau <strong>Add SSH key</strong><br/>
-Di kolom title masukkan deskripsi label untuk key baru tersebut, lalu pada kolom key pastekan SSH key yang sudah di copy di <em>id_rsa_pub</em> sebelumnya, klik <strong>Add SSH key</strong> jika muncul pertanyaan silakan masukkan  password Github anda<br/>
-Untuk mengecek apakah SSH key kita sudah terhubung ke Github silakan masukan perintah di bawah ini di terminal</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -T git@github.com
-</span><span class='line'># Attempts to ssh to GitHub</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Dan apabila muncul pesan seperti berikut itu tandanya kamu sudah berhasil menghubungkan SSH key ke github</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Hi username! You've successfully authenticated, but GitHub does not
-</span><span class='line'>provide shell access.</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/16/cara-membuat-blog-dengan-octopress/">Cara Membuat Blog Dengan Octopress</a></h1>
+      <h1 class="entry-title">Cara Membuat Blog Dengan Octopress</h1>
     
     
       <p class="meta">
@@ -193,7 +86,7 @@ Untuk mengecek apakah SSH key kita sudah terhubung ke Github silakan masukan per
   </header>
 
 
-  <div class="entry-content"><p>Sebelum mulai pastikan sistem anda<br/>
+<div class="entry-content"><p>Sebelum mulai pastikan sistem anda<br/>
 1. Sudah terinstall Git<br/>
 2. Sudah terinstall ruby</p>
 
@@ -268,18 +161,52 @@ Lalu jalankan</p>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
+  <footer>
+    <p class="meta">
+      
   
-  <div class="pagination">
+
+<span class="byline author vcard">Posted by <span class="fn">Dede Hermawan</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-11-16T15:33:08+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:33 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/" data-via="" data-counturl="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/11/17/koneksi-ke-github-dengan-ssh/" title="Next Post: koneksi ke github dengan SSH">koneksi ke github dengan SSH &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -303,6 +230,7 @@ Lalu jalankan</p>
 
   
 </aside>
+
 
     </div>
   </div>
