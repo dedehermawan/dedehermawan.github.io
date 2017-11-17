@@ -4,10 +4,10 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-17T18:14:37+07:00</updated>
+  <updated>2017-11-17T19:58:54+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Dede Hermawan]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -40,7 +40,7 @@
 </span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Install theme dafault dari Octopress</p>
+<p>Install theme default dari Octopress</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
@@ -61,8 +61,7 @@ itu tandanya kamu sudah berhasil membuat post</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Apabila muncul kata-kata <code>&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.</code> di terminal<br/>
-Selanjutnya akses di browser dengan alamat <code>http://localhost:4000</code><br/>
+<p>Selanjutnya akses di browser dengan alamat <code>http://localhost:4000</code><br/>
 untuk keluar dari mode preview tekan tombol Ctrl+c di keyboard</p>
 
 <h3>Deploy ke Github</h3>
@@ -74,7 +73,7 @@ Github menggunakan branch master sebagai public directory di web server, tapi di
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Perintah tersebut akan memintamu memasukaan alamat URL repo github kamu, (sebagai contoh masukan <code>git@github.com:username/username/github.io.git</code>)
+<p>Perintah tersebut akan memintamu memasukan alamat URL repo github kamu, tinggal pilih mau menggunakan SSH atau HTTPS, contoh saya menggunakan yang HTTPS <code>https://github.com/username/username.github.io</code>
 Lalu jalankan</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

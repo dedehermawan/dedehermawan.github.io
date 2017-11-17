@@ -4,10 +4,10 @@
   <title><![CDATA[Category: Octopress | My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-17T18:14:37+07:00</updated>
+  <updated>2017-11-17T19:58:54+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Dede Hermawan]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -34,7 +34,7 @@ Selanjutnya, Install dependecy
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>gem install bundler
 </span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
-Install theme dafault dari Octopress
+Install theme default dari Octopress
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake install</span></code></pre></td></tr></table></div></figure></p>
 
@@ -48,7 +48,6 @@ itu tandanya kamu sudah berhasil membuat post</p>
 <p>Untuk melihat hasil pembuatan post kita di browser caranya masukan perintah ini di terminal
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
-Apabila muncul kata-kata <code>&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.</code> di terminal<br/>
 Selanjutnya akses di browser dengan alamat <code>http://localhost:4000</code><br/>
 untuk keluar dari mode preview tekan tombol Ctrl+c di keyboard</p>
 
@@ -58,7 +57,7 @@ untuk keluar dari mode preview tekan tombol Ctrl+c di keyboard</p>
 Github menggunakan branch master sebagai public directory di web server, tapi di octopress ini kamu bekerja di branch source oleh karena itu kamu harus commit dan push konten hasil generate ke github ke branch master, Untuk itu octopress memiliki perintah untuk konfigurasi yang akan membantu kamu menangani semuanya itu.
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-Perintah tersebut akan memintamu memasukaan alamat URL repo github kamu, (sebagai contoh masukan <code>git@github.com:username/username/github.io.git</code>)
+Perintah tersebut akan memintamu memasukan alamat URL repo github kamu, tinggal pilih mau menggunakan SSH atau HTTPS, contoh saya menggunakan yang HTTPS <code>https://github.com/username/username.github.io</code>
 Lalu jalankan
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
