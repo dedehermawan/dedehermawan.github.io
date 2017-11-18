@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://dedehermawan.github.io/blog/2017/11/18/install-ruby-on-rails-di-ubuntu-16-dot-04/</loc>
+<lastmod>2017-11-18T22:06:42+07:00</lastmod>
+</url>
+<url>
 <loc>http://dedehermawan.github.io/blog/2017/11/17/koneksi-ke-github-dengan-ssh/</loc>
 <lastmod>2017-11-17T23:02:54+07:00</lastmod>
 </url>
@@ -19,5 +23,11 @@
 </url>
 <url>
 <loc>http://dedehermawan.github.io/blog/categories/github/</loc>
+</url>
+<url>
+<loc>http://dedehermawan.github.io/blog/categories/ruby/</loc>
+</url>
+<url>
+<loc>http://dedehermawan.github.io/blog/categories/ruby-on-rails/</loc>
 </url>
 </urlset>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-18T17:43:21+07:00</updated>
+  <updated>2017-11-18T23:43:01+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -36,7 +36,7 @@ Selanjutnya, Install dependecy
 </span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
 Install theme default dari Octopress
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake install</span></code></pre></td></tr></table></div></figure></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake install</span></code></pre></td></tr></table></div></figure><!-- more --></p>
 
 <h3>Membuat post</h3>
 
