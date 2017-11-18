@@ -23,7 +23,7 @@ bundle install
 Install theme default dari Octopress
 {% codeblock %}
 rake install
-{% endcodeblock %}
+{% endcodeblock %}<!-- more -->
 ### Membuat post
 {% codeblock %}
 rake "new_post[Judul dari post]"

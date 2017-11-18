@@ -15,7 +15,7 @@ ls -al ~/.ssh
 # List the file in your .ssh directory, if they exist
 {% endcodeblock %}
 Cek daftar direktori untuk melihat apakah kamu sudah mempunyai public SSH key.  
-Secara default, nama file dari public keys biasanya  
+Secara default, nama file dari public keys biasanya:<!-- more -->  
 * id_dsa.pub  
 * idecdsa.pub  
 * id_ed25519.pub  
