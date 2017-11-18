@@ -4,7 +4,11 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
+<<<<<<< HEAD
   <updated>2017-11-18T07:02:51+07:00</updated>
+=======
+  <updated>2017-11-17T19:58:54+07:00</updated>
+>>>>>>> bab17b07580fe4502c356cbcef03c25d5953604f
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -14,6 +18,7 @@
 
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Koneksi Ke Github Dengan SSH]]></title>
     <link href="http://dedehermawan.github.io/blog/2017/11/17/koneksi-ke-github-dengan-ssh/"/>
     <updated>2017-11-17T23:02:54+07:00</updated>
@@ -100,6 +105,8 @@ Untuk mengecek apakah SSH key kita sudah terhubung ke Github silakan masukan per
   </entry>
   
   <entry>
+=======
+>>>>>>> bab17b07580fe4502c356cbcef03c25d5953604f
     <title type="html"><![CDATA[Cara Membuat Blog Dengan Octopress]]></title>
     <link href="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/"/>
     <updated>2017-11-16T15:33:08+07:00</updated>
