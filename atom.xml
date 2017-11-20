@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-18T23:43:01+07:00</updated>
+  <updated>2017-11-21T01:41:03+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -12,6 +12,185 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Membuat Aplikasi Dengan Ruby on Rails]]></title>
+    <link href="http://dedehermawan.github.io/blog/2017/11/20/membuat-aplikasi-dengan-ruby-on-rails/"/>
+    <updated>2017-11-20T13:11:06+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2017/11/20/membuat-aplikasi-dengan-ruby-on-rails</id>
+    <content type="html"><![CDATA[<p>Sebelumnya saya sudah memposting bagaimana cara untuk install ruby on rails atau lebih di kenal dengan <code>rails</code> saja, itu artinya sekarang kita akan mencoba membuat aplikasi pertamamu dengan rails, apabila ada yang belum menginstall ruby maupun rails nya silakan baca postingan tentang bagaimana cara menginstall ruby dan rails <a href="http://dedehermawan.github.io/blog/2017/11/18/install-ruby-on-rails-di-ubuntu-16-dot-04/">disini</a><br/>
+Oke kalau rails sudah terpasang di sistem kamu, langsung saja ketikkan perintah berikut di terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new NamaAplikasi</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Perintah di atas otomatis akan membuat aplikasi rails dengan nama <strong>NamaAplikasi</strong>.<br/>
+Untuk mengetahui perintah lain pada saat mau membuat aplikasi rails silakan gunakan perintah berikut</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new -h</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Perintah tersebut akan menampilkan perintah-perintah apa saja yang bisa di gunakan pada saat mau <em>create</em> aplikasi baru dengan rails</p>
+
+<!--more-->
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Usage:
+</span><span class='line'>  rails new APP_PATH [options]
+</span><span class='line'>
+</span><span class='line'>Options:
+</span><span class='line'>  -r, [--ruby=PATH]                                      # Path to the Ruby binary of your choice
+</span><span class='line'>                                                         # Default: /home/aliya/.rvm/rubies/ruby-2.3.1/bin/ruby
+</span><span class='line'>  -m, [--template=TEMPLATE]                              # Path to some application template (can be a filesystem path or URL)
+</span><span class='line'>  -d, [--database=DATABASE]                              # Preconfigure for selected database (options: mysql/oracle/postgresql/sqlite3/frontbase/ibm_db/sqlserver/jdbcmysql/jdbcsqlite3/jdbcpostgresql/jdbc)
+</span><span class='line'>                                                         # Default: sqlite3
+</span><span class='line'>  -j, [--javascript=JAVASCRIPT]                          # Preconfigure for selected JavaScript library
+</span><span class='line'>                                                         # Default: jquery
+</span><span class='line'>      [--skip-gemfile], [--no-skip-gemfile]              # Don't create a Gemfile
+</span><span class='line'>  -B, [--skip-bundle], [--no-skip-bundle]                # Don't run bundle install
+</span><span class='line'>  -G, [--skip-git], [--no-skip-git]                      # Skip .gitignore file
+</span><span class='line'>      [--skip-keeps], [--no-skip-keeps]                  # Skip source control .keep files
+</span><span class='line'>  -M, [--skip-action-mailer], [--no-skip-action-mailer]  # Skip Action Mailer files
+</span><span class='line'>  -O, [--skip-active-record], [--no-skip-active-record]  # Skip Active Record files
+</span><span class='line'>  -P, [--skip-puma], [--no-skip-puma]                    # Skip Puma related files
+</span><span class='line'>  -C, [--skip-action-cable], [--no-skip-action-cable]    # Skip Action Cable files
+</span><span class='line'>  -S, [--skip-sprockets], [--no-skip-sprockets]          # Skip Sprockets files
+</span><span class='line'>      [--skip-spring], [--no-skip-spring]                # Don't install Spring application preloader
+</span><span class='line'>      [--skip-listen], [--no-skip-listen]                # Don't generate configuration that depends on the listen gem
+</span><span class='line'>  -J, [--skip-javascript], [--no-skip-javascript]        # Skip JavaScript files
+</span><span class='line'>      [--skip-turbolinks], [--no-skip-turbolinks]        # Skip turbolinks gem
+</span><span class='line'>  -T, [--skip-test], [--no-skip-test]                    # Skip test files
+</span><span class='line'>      [--dev], [--no-dev]                                # Setup the application with Gemfile pointing to your Rails checkout
+</span><span class='line'>      [--edge], [--no-edge]                              # Setup the application with Gemfile pointing to Rails repository
+</span><span class='line'>      [--rc=RC]                                          # Path to file containing extra configuration options for rails command
+</span><span class='line'>      [--no-rc], [--no-no-rc]                            # Skip loading of extra configuration options from .railsrc file
+</span><span class='line'>      [--api], [--no-api]                                # Preconfigure smaller stack for API only apps
+</span><span class='line'>
+</span><span class='line'>Runtime options:
+</span><span class='line'>  -f, [--force]                    # Overwrite files that already exist
+</span><span class='line'>  -p, [--pretend], [--no-pretend]  # Run but do not make any changes
+</span><span class='line'>  -q, [--quiet], [--no-quiet]      # Suppress status output
+</span><span class='line'>  -s, [--skip], [--no-skip]        # Skip files that already exist
+</span><span class='line'>
+</span><span class='line'>Rails options:
+</span><span class='line'>  -h, [--help], [--no-help]        # Show this help message and quit
+</span><span class='line'>  -v, [--version], [--no-version]  # Show Rails version number and quit
+</span><span class='line'>
+</span><span class='line'>Description:
+</span><span class='line'>    The 'rails new' command creates a new Rails application with a default
+</span><span class='line'>    directory structure and configuration at the path you specify.
+</span><span class='line'>
+</span><span class='line'>    You can specify extra command-line arguments to be used every time
+</span><span class='line'>    'rails new' runs in the .railsrc configuration file in your home directory.
+</span><span class='line'>
+</span><span class='line'>    Note that the arguments specified in the .railsrc file don't affect the
+</span><span class='line'>    defaults values shown above in this help message.
+</span><span class='line'>
+</span><span class='line'>Example:
+</span><span class='line'>    rails new ~/Code/Ruby/weblog
+</span><span class='line'>
+</span><span class='line'>    This generates a skeletal Rails installation in ~/Code/Ruby/weblog.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setelah kamu sukses membuat aplikasi tersebut berpindahlah ke folder aplikasi tersebut</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd NamaAplikasi</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lalu ketikkan perintah berikut untuk menjalankan aplikasi railsnya</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Apabila di terminal muncul kata-kata seperti berikut</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>=> Booting Puma
+</span><span class='line'>=> Rails 5.1.4 application starting in development 
+</span><span class='line'>=> Run `rails server -h` for more startup options
+</span><span class='line'>Puma starting in single mode...
+</span><span class='line'>* Version 3.11.0 (ruby 2.4.0-p0), codename: Love Song
+</span><span class='line'>* Min threads: 5, max threads: 5
+</span><span class='line'>* Environment: development
+</span><span class='line'>* Listening on tcp://0.0.0.0:3000
+</span><span class='line'>Use Ctrl-C to stop</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Itu tandanya kamu telah berhasil menjalankan aplikasi rails kamu, untuk mengeceknya silakan buka browser dengan alamat <a href="localhost:3000">http://localhost:3000</a>.<br/>
+Jika tampilan pada browser kamu seperti gambar di bawah ini.</p>
+
+<p><img class="left" src="http://dedehermawan.github.io/images/rails-home.png" title="image" alt="images"></p>
+
+<p>Berarti kamu sudah berhasil membuat aplikasi rails di komputermu.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install Ruby on Rails Di Ubuntu 16.04]]></title>
@@ -50,11 +229,11 @@ Oke untuk menginstall ruby dengan rvm masukan perintah ini di terminal.</p>
 </span><span class='line'>gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 </span><span class='line'>curl -sSL https://get.rvm.io | bash -s stable
 </span><span class='line'>source ~/.rvm/scripts/rvm
-</span><span class='line'>rvm install 2.3.1
-</span><span class='line'>rvm use 2.3.1 --default</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>rvm install 2.4.0
+</span><span class='line'>rvm use 2.4.0 --default</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Coba perhatikan potongan perintah di atas <code>rvm install 2.3.1</code> itu artinya kita menginstall ruby dengan versi 2.3.1, kamu bisa cek versi lain/terbaru dari ruby <a href="https://www.ruby-lang.org/en/downloads/">disini</a>.<br/>
+<p>Coba perhatikan potongan perintah di atas <code>rvm install 2.4.0</code> itu artinya kita menginstall ruby dengan versi 2.4.0, kamu bisa cek versi lain/terbaru dari ruby <a href="https://www.ruby-lang.org/en/downloads/">disini</a>.<br/>
 Langkah terakhir jalankan install bundler</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -66,7 +245,7 @@ Langkah terakhir jalankan install bundler</p>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>ruby -v
-</span><span class='line'># ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-linux]</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'># ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-linux]</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Apabila muncul kata-kata seperti di atas maka berarti proses instal ruby kamu berhasil.</p>
@@ -85,7 +264,7 @@ Untuk menginstall NodeJs, kita akan menambahkannya dengan menggunakan ofisial re
 <p>Selanjutnya install Rails dengan gem</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install rails -v 5.0.6</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install rails</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Sekarang coba cek dengan menjalankan <code>rails -v</code> untuk memastikan semuanya terinstal dengan benar</p>
@@ -93,10 +272,10 @@ Untuk menginstall NodeJs, kita akan menambahkannya dengan menggunakan ofisial re
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rails -v
-</span><span class='line'># Rails 5.0.6</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'># Rails 5.1.4</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Dan lagi-lagi apabila muncul kata-kata <code>Rails 5.0.6</code> berarti proses instal rails kamu sukses.</p>
+<p>Dan lagi-lagi apabila muncul kata-kata <code>Rails 5.1.4</code> berarti proses instal rails kamu sukses.</p>
 
 <p>Oke sekian penjelasan mengenai bagaimana cara menginstall ruby on rails di ubuntu, untuk postingan selanjutnya kita akan mencoba bagaimana membuat web dengan menggunakan framework Rails, jadi tetap ikuti blog saya ini ya</p>
 ]]></content>

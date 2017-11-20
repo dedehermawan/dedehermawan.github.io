@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails | My Octopress Blog]]></title>
+  <link href="http://dedehermawan.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://dedehermawan.github.io/"/>
+  <updated>2017-11-21T01:41:03+07:00</updated>
+  <id>http://dedehermawan.github.io/</id>
+  <author>
+    <name><![CDATA[Dede Hermawan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Membuat Aplikasi Dengan Ruby on Rails]]></title>
+    <link href="http://dedehermawan.github.io/blog/2017/11/20/membuat-aplikasi-dengan-ruby-on-rails/"/>
+    <updated>2017-11-20T13:11:06+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2017/11/20/membuat-aplikasi-dengan-ruby-on-rails</id>
+    <content type="html"><![CDATA[<p>Sebelumnya saya sudah memposting bagaimana cara untuk install ruby on rails atau lebih di kenal dengan <code>rails</code> saja, itu artinya sekarang kita akan mencoba membuat aplikasi pertamamu dengan rails, apabila ada yang belum menginstall ruby maupun rails nya silakan baca postingan tentang bagaimana cara menginstall ruby dan rails <a href="/blog/2017/11/18/install-ruby-on-rails-di-ubuntu-16-dot-04/">disini</a><br/>
+Oke kalau rails sudah terpasang di sistem kamu, langsung saja ketikkan perintah berikut di terminal
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new NamaAplikasi</span></code></pre></td></tr></table></div></figure>
+Perintah di atas otomatis akan membuat aplikasi rails dengan nama <strong>NamaAplikasi</strong>.<br/>
+Untuk mengetahui perintah lain pada saat mau membuat aplikasi rails silakan gunakan perintah berikut
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new -h</span></code></pre></td></tr></table></div></figure>
+Perintah tersebut akan menampilkan perintah-perintah apa saja yang bisa di gunakan pada saat mau <em>create</em> aplikasi baru dengan rails</p>
+
+<!--more-->
+
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Usage:
+</span><span class='line'>  rails new APP_PATH [options]&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Options:
+</span><span class='line'>  -r, [&ndash;ruby=PATH]                                      # Path to the Ruby binary of your choice
+</span><span class='line'>                                                         # Default: /home/aliya/.rvm/rubies/ruby-2.3.1/bin/ruby
+</span><span class='line'>  -m, [&ndash;template=TEMPLATE]                              # Path to some application template (can be a filesystem path or URL)
+</span><span class='line'>  -d, [&ndash;database=DATABASE]                              # Preconfigure for selected database (options: mysql/oracle/postgresql/sqlite3/frontbase/ibm_db/sqlserver/jdbcmysql/jdbcsqlite3/jdbcpostgresql/jdbc)
+</span><span class='line'>                                                         # Default: sqlite3
+</span><span class='line'>  -j, [&ndash;javascript=JAVASCRIPT]                          # Preconfigure for selected JavaScript library
+</span><span class='line'>                                                         # Default: jquery
+</span><span class='line'>      [&ndash;skip-gemfile], [&ndash;no-skip-gemfile]              # Don&rsquo;t create a Gemfile
+</span><span class='line'>  -B, [&ndash;skip-bundle], [&ndash;no-skip-bundle]                # Don&rsquo;t run bundle install
+</span><span class='line'>  -G, [&ndash;skip-git], [&ndash;no-skip-git]                      # Skip .gitignore file
+</span><span class='line'>      [&ndash;skip-keeps], [&ndash;no-skip-keeps]                  # Skip source control .keep files
+</span><span class='line'>  -M, [&ndash;skip-action-mailer], [&ndash;no-skip-action-mailer]  # Skip Action Mailer files
+</span><span class='line'>  -O, [&ndash;skip-active-record], [&ndash;no-skip-active-record]  # Skip Active Record files
+</span><span class='line'>  -P, [&ndash;skip-puma], [&ndash;no-skip-puma]                    # Skip Puma related files
+</span><span class='line'>  -C, [&ndash;skip-action-cable], [&ndash;no-skip-action-cable]    # Skip Action Cable files
+</span><span class='line'>  -S, [&ndash;skip-sprockets], [&ndash;no-skip-sprockets]          # Skip Sprockets files
+</span><span class='line'>      [&ndash;skip-spring], [&ndash;no-skip-spring]                # Don&rsquo;t install Spring application preloader
+</span><span class='line'>      [&ndash;skip-listen], [&ndash;no-skip-listen]                # Don&rsquo;t generate configuration that depends on the listen gem
+</span><span class='line'>  -J, [&ndash;skip-javascript], [&ndash;no-skip-javascript]        # Skip JavaScript files
+</span><span class='line'>      [&ndash;skip-turbolinks], [&ndash;no-skip-turbolinks]        # Skip turbolinks gem
+</span><span class='line'>  -T, [&ndash;skip-test], [&ndash;no-skip-test]                    # Skip test files
+</span><span class='line'>      [&ndash;dev], [&ndash;no-dev]                                # Setup the application with Gemfile pointing to your Rails checkout
+</span><span class='line'>      [&ndash;edge], [&ndash;no-edge]                              # Setup the application with Gemfile pointing to Rails repository
+</span><span class='line'>      [&ndash;rc=RC]                                          # Path to file containing extra configuration options for rails command
+</span><span class='line'>      [&ndash;no-rc], [&ndash;no-no-rc]                            # Skip loading of extra configuration options from .railsrc file
+</span><span class='line'>      [&ndash;api], [&ndash;no-api]                                # Preconfigure smaller stack for API only apps&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Runtime options:
+</span><span class='line'>  -f, [&ndash;force]                    # Overwrite files that already exist
+</span><span class='line'>  -p, [&ndash;pretend], [&ndash;no-pretend]  # Run but do not make any changes
+</span><span class='line'>  -q, [&ndash;quiet], [&ndash;no-quiet]      # Suppress status output
+</span><span class='line'>  -s, [&ndash;skip], [&ndash;no-skip]        # Skip files that already exist&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Rails options:
+</span><span class='line'>  -h, [&ndash;help], [&ndash;no-help]        # Show this help message and quit
+</span><span class='line'>  -v, [&ndash;version], [&ndash;no-version]  # Show Rails version number and quit&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Description:
+</span><span class='line'>    The &lsquo;rails new&rsquo; command creates a new Rails application with a default
+</span><span class='line'>    directory structure and configuration at the path you specify.&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>You can specify extra command-line arguments to be used every time
+</span><span class='line'>'rails new' runs in the .railsrc configuration file in your home directory.
+</span><span class='line'>
+</span><span class='line'>Note that the arguments specified in the .railsrc file don't affect the
+</span><span class='line'>defaults values shown above in this help message.
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Example:
+</span><span class='line'>    rails new ~/Code/Ruby/weblog&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>This generates a skeletal Rails installation in ~/Code/Ruby/weblog.
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure>
+Setelah kamu sukses membuat aplikasi tersebut berpindahlah ke folder aplikasi tersebut
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd NamaAplikasi</span></code></pre></td></tr></table></div></figure>
+Lalu ketikkan perintah berikut untuk menjalankan aplikasi railsnya
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails s</span></code></pre></td></tr></table></div></figure>
+Apabila di terminal muncul kata-kata seperti berikut
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>=> Booting Puma
+</span><span class='line'>=> Rails 5.1.4 application starting in development
+</span><span class='line'>=> Run &lt;code>rails server -h&lt;/code> for more startup options
+</span><span class='line'>Puma starting in single mode&hellip;
+</span><span class='line'>* Version 3.11.0 (ruby 2.4.0-p0), codename: Love Song
+</span><span class='line'>* Min threads: 5, max threads: 5
+</span><span class='line'>* Environment: development
+</span><span class='line'>* Listening on tcp://0.0.0.0:3000
+</span><span class='line'>Use Ctrl-C to stop</span></code></pre></td></tr></table></div></figure>
+Itu tandanya kamu telah berhasil menjalankan aplikasi rails kamu, untuk mengeceknya silakan buka browser dengan alamat <a href="localhost:3000">http://localhost:3000</a>.<br/>
+Jika tampilan pada browser kamu seperti gambar di bawah ini.</p>
+
+<p><img class="left" src="/images/rails-home.png" title="&lsquo;image&rsquo; &lsquo;images&rsquo;" ></p>
+
+<p>Berarti kamu sudah berhasil membuat aplikasi rails di komputermu.</p>
+]]></content>
+  </entry>
+  
+</feed>
