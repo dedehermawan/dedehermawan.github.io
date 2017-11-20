@@ -3,7 +3,7 @@ layout: post
 title: "Install Ruby on Rails di Ubuntu 16.04"
 date: 2017-11-18 22:06:42 +0700
 comments: true
-categories: [ruby, ruby on rails]
+categories: [ruby, rails]
 ---
 ### Install Ruby
 Untuk memastikan kita memiliki semua yang diperlukan untuk dukungan Webpacker di Rails, pertama-tama kita tambahkan repository NodeJs dan Yarn ke sistem kita sebelum menginstall.
@@ -23,10 +23,10 @@ sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-d
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
-rvm install 2.3.1
-rvm use 2.3.1 --default
+rvm install 2.4.0
+rvm use 2.4.0 --default
 {% endcodeblock %}
-Coba perhatikan potongan perintah di atas `rvm install 2.3.1` itu artinya kita menginstall ruby dengan versi 2.3.1, kamu bisa cek versi lain/terbaru dari ruby [disini](https://www.ruby-lang.org/en/downloads/).  
+Coba perhatikan potongan perintah di atas `rvm install 2.4.0` itu artinya kita menginstall ruby dengan versi 2.4.0, kamu bisa cek versi lain/terbaru dari ruby [disini](https://www.ruby-lang.org/en/downloads/).  
 Langkah terakhir jalankan install bundler
 {% codeblock %}
 gem install bundler
@@ -34,7 +34,7 @@ gem install bundler
 Coba sekarang cek apakah ruby sudah terinstall dengan benar
 {% codeblock %}
 ruby -v
-# ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-linux]
+# ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-linux]
 {% endcodeblock %}
 Apabila muncul kata-kata seperti di atas maka berarti proses instal ruby kamu berhasil.  
 ### Install Rails
@@ -46,13 +46,13 @@ sudo apt-get install -y nodej
 {% endcodeblock %}
 Selanjutnya install Rails dengan gem
 {% codeblock %}
-gem install rails -v 5.0.6
+gem install rails
 {% endcodeblock %}
 Sekarang coba cek dengan menjalankan `rails -v` untuk memastikan semuanya terinstal dengan benar
 {% codeblock %}
 rails -v
-# Rails 5.0.6
+# Rails 5.1.4
 {% endcodeblock %}
-Dan lagi-lagi apabila muncul kata-kata `Rails 5.0.6` berarti proses instal rails kamu sukses.  
+Dan lagi-lagi apabila muncul kata-kata `Rails 5.1.4` berarti proses instal rails kamu sukses.  
   
 Oke sekian penjelasan mengenai bagaimana cara menginstall ruby on rails di ubuntu, untuk postingan selanjutnya kita akan mencoba bagaimana membuat web dengan menggunakan framework Rails, jadi tetap ikuti blog saya ini ya
