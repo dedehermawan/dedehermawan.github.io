@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-21T01:41:03+07:00</updated>
+  <updated>2017-12-30T02:05:03+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -180,6 +180,86 @@ Jika tampilan pada browser kamu seperti gambar di bawah ini.</p>
 <p><img class="left" src="/images/rails-home.png" title="&lsquo;image&rsquo; &lsquo;images&rsquo;" ></p>
 
 <p>Berarti kamu sudah berhasil membuat aplikasi rails di komputermu.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install Ruby on Rails Di Ubuntu 16.04]]></title>
+    <link href="http://dedehermawan.github.io/blog/2017/11/18/install-ruby-on-rails-di-ubuntu-16-dot-04/"/>
+    <updated>2017-11-18T22:06:42+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2017/11/18/install-ruby-on-rails-di-ubuntu-16-dot-04</id>
+    <content type="html"><![CDATA[<h3>Install Ruby</h3>
+
+<p>Untuk memastikan kita memiliki semua yang diperlukan untuk dukungan Webpacker di Rails, pertama-tama kita tambahkan repository NodeJs dan Yarn ke sistem kita sebelum menginstall.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -sL &lt;a href="https://deb.nodesource.com/setup_8.x">https://deb.nodesource.com/setup_8.x&lt;/a> | sudo -E bash -
+</span><span class='line'>curl -sS &lt;a href="https://dl.yarnpkg.com/debian/pubkey.gpg">https://dl.yarnpkg.com/debian/pubkey.gpg&lt;/a> | sudo apt-key add -
+</span><span class='line'>echo &ldquo;deb &lt;a href="https://dl.yarnpkg.com/debian/">https://dl.yarnpkg.com/debian/&lt;/a> stable main&rdquo; | sudo tee /etc/apt/sources.list.d/yarn.list&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>sudo apt-get update
+</span><span class='line'>sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs yarn</span></code></pre></td></tr></table></div></figure>
+Selanjutnya kita akan menginstall ruby dengan menggunakan salah satu dari 3  cara, yaitu yang pertama yang paling banyak di gunakan untuk install ruby yaitu menggunakan <code>rbenv</code>, yang kedua menggunakan <code>rvm</code> dan yang ketiga adalah dengan cara langsung mengambil dari sumbernya.<!-- more -->
+Tapi karena saya menggunakan rvm untuk menginstall ruby di sistem saya maka saya akan membahas install ruby dengan rvm saja hhe..untuk cara selain rvm kamu bisa lihat <a href="https://gorails.com/setup/ubuntu/16.04#ruby">disini</a>.<br/>
+Oke untuk menginstall ruby dengan rvm masukan perintah ini di terminal.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+</span><span class='line'>gpg &ndash;keyserver hkp://keys.gnupg.net &ndash;recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+</span><span class='line'>curl -sSL &lt;a href="https://get.rvm.io">https://get.rvm.io&lt;/a> | bash -s stable
+</span><span class='line'>source ~/.rvm/scripts/rvm
+</span><span class='line'>rvm install 2.4.0
+</span><span class='line'>rvm use 2.4.0 &ndash;default</span></code></pre></td></tr></table></div></figure>
+Coba perhatikan potongan perintah di atas <code>rvm install 2.4.0</code> itu artinya kita menginstall ruby dengan versi 2.4.0, kamu bisa cek versi lain/terbaru dari ruby <a href="https://www.ruby-lang.org/en/downloads/">disini</a>.<br/>
+Langkah terakhir jalankan install bundler
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install bundler</span></code></pre></td></tr></table></div></figure>
+Coba sekarang cek apakah ruby sudah terinstall dengan benar
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -v&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-linux]&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure>
+Apabila muncul kata-kata seperti di atas maka berarti proses instal ruby kamu berhasil.</p>
+
+<h3>Install Rails</h3>
+
+<p>Semenjak Rails mengikutsertakan banyak dependency akhir-akhir ini, kita butuh menginstall Javascript Runtime seperti NodeJS, Ini memungkinkan kamu menggunakan Coffeescript dan Asset Pipeline di Rails yang menggabungkan dan meminimalkan javascript untuk menyediakan production environment secara lebih cepat.<br/>
+Untuk menginstall NodeJs, kita akan menambahkannya dengan menggunakan ofisial repositori
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -sL &lt;a href="https://deb.nodesource.com/setup_8.x">https://deb.nodesource.com/setup_8.x&lt;/a> | sudo -E bash -
+</span><span class='line'>sudo apt-get install -y nodej</span></code></pre></td></tr></table></div></figure>
+Selanjutnya install Rails dengan gem
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install rails</span></code></pre></td></tr></table></div></figure>
+Sekarang coba cek dengan menjalankan <code>rails -v</code> untuk memastikan semuanya terinstal dengan benar
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails -v&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Rails 5.1.4&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure>
+Dan lagi-lagi apabila muncul kata-kata <code>Rails 5.1.4</code> berarti proses instal rails kamu sukses.</p>
+
+<p>Oke sekian penjelasan mengenai bagaimana cara menginstall ruby on rails di ubuntu, untuk postingan selanjutnya kita akan mencoba bagaimana membuat web dengan menggunakan framework Rails, jadi tetap ikuti blog saya ini ya</p>
 ]]></content>
   </entry>
   

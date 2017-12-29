@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-21T01:41:03+07:00</updated>
+  <updated>2017-12-30T02:05:03+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Authentication]]></title>
+    <link href="http://dedehermawan.github.io/blog/2017/12/30/rails-authentication/"/>
+    <updated>2017-12-30T02:05:03+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2017/12/30/rails-authentication</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Membuat Aplikasi Dengan Ruby on Rails]]></title>

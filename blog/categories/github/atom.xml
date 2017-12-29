@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github | My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-11-21T01:41:03+07:00</updated>
+  <updated>2017-12-30T02:05:03+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -49,7 +49,7 @@ Tapi apabila kamu memiliki pasangan public dan private key (contoh <em>id_rsa_pu
 
 <p>Pastekan text dibawah ini, ganti alamat emailnya dengan alamat email Github kamu
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -b 4096 -C &ldquo;&lt;a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x79;&#111;&#x75;&#x72;&#x5f;&#101;&#x6d;&#x61;&#105;&#108;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;">&#x79;&#111;&#x75;&#114;&#x5f;&#x65;&#109;&#x61;&#x69;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#109;&lt;/a>&rdquo;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -b 4096 -C &ldquo;&lt;a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#121;&#111;&#117;&#x72;&#x5f;&#x65;&#109;&#97;&#105;&#x6c;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#121;&#x6f;&#x75;&#114;&#x5f;&#x65;&#109;&#97;&#105;&#108;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;&lt;/a>&rdquo;</span></code></pre></td></tr></table></div></figure>
 Ini akan membuat SSH key baru, dengan menggunakan email yang telah di daftarkan sebelumnya sebagai label
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Generating public/private rsa key pair.</span></code></pre></td></tr></table></div></figure>
@@ -85,7 +85,7 @@ Untuk mengecek apakah SSH key kita sudah terhubung ke Github silakan masukan per
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -T &lt;a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#104;&#117;&#98;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;&lt;/a>&lt;/p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -T &lt;a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;&lt;/a>&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;h1>Attempts to ssh to GitHub&lt;/h1>
 </span><span class='line'>

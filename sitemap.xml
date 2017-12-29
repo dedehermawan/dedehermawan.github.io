@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://dedehermawan.github.io/blog/2017/12/30/rails-authentication/</loc>
+<lastmod>2017-12-30T02:05:03+07:00</lastmod>
+</url>
+<url>
 <loc>http://dedehermawan.github.io/blog/2017/11/20/membuat-aplikasi-dengan-ruby-on-rails/</loc>
 <lastmod>2017-11-20T13:11:06+07:00</lastmod>
 </url>
@@ -30,9 +34,6 @@
 </url>
 <url>
 <loc>http://dedehermawan.github.io/blog/categories/ruby/</loc>
-</url>
-<url>
-<loc>http://dedehermawan.github.io/blog/categories/ruby-on-rails/</loc>
 </url>
 <url>
 <loc>http://dedehermawan.github.io/blog/categories/rails/</loc>
