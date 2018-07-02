@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Cara Membuat Blog Dengan Octopress - Catatanku</title>
+  <title>Berkenalan Dengan MongoDB - Catatanku</title>
   <meta name="author" content="Dede Hermawan">
 
   
-  <meta name="description" content="Sebelum mulai pastikan sistem anda
-1. Sudah terinstall Git
-2. Sudah terinstall ruby Install Octopress Buka terminal, lalu git clone dari repo &hellip;">
+  <meta name="description" content="Apasih MongoDB ? MongoDB merupakan sebuah database yang memiliki konsep NoSQL. Istilah ini dapat diartikan secara awam dengan non relasional karena &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/">
+  <link rel="canonical" href="http://dedehermawan.github.io/blog/2017/11/25/berkenalan-dengan-mongodb/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Catatanku" type="application/atom+xml">
@@ -70,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Cara Membuat Blog Dengan Octopress</h1>
+      <h1 class="entry-title">Berkenalan Dengan MongoDB</h1>
     
     
       <p class="meta">
@@ -79,89 +77,71 @@
 
 
 
-<time class='entry-date' datetime='2017-11-16T15:33:08+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:33 pm</span></time>
+<time class='entry-date' datetime='2017-11-25T09:33:07+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:33 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Sebelum mulai pastikan sistem anda<br/>
-1. Sudah terinstall Git<br/>
-2. Sudah terinstall ruby</p>
+<div class="entry-content"><h2>Apasih MongoDB ?</h2>
 
-<h3>Install Octopress</h3>
+<p>MongoDB merupakan sebuah database yang memiliki konsep NoSQL. Istilah ini dapat diartikan secara awam dengan non relasional karena berbeda dengan MySQL yang merupakan RDBMS (<em>Relational DataBase Management System</em>).</p>
 
-<p>Buka terminal, lalu git clone dari repo Octopressnya</p>
+<p>Untuk memulai berkenalan kamu terlebih dahulu harus mengetahui beberapa perbedaan yang mendasar antara MongoDB dengan RDBMS, diantaranya:</p>
+
+<ul>
+<li><em>Table</em> pada MongoDB dikenal dengan <em>Collections</em></li>
+<li><em>Rows</em> pada MongoDB dikenal dengan <em>Documents</em></li>
+<li>Setiap <em>documents</em> bisa berisi kolom yang berbeda dengan <em>documents</em> lainnya</li>
+<li>Sebuah <em>collections</em> dapat membuat setiap <em>documents</em> memiliki kolom yang sama dengan membuat parameter <em>capped</em> menjadi true saat pembuatan collection</li>
+<li><em>Query</em> yang digunakan oleh MongoDB tidak menggunakan bahasa query seperti SQL, tapi menggunakan Javascript. Bahkan Anda dapat membuat semacam <em>stored procedure</em> yang ditulis menggunakan Javascript</li>
+<li>Secara <em>default</em> setiap membuat <em>documents</em> baru, <strong>id</strong> dari <em>documents</em> tersebut akan tercipta otomatis. Jadi Anda tidak perlu membuat <strong>id</strong> sendiri jika membutuhkan <strong>id</strong></li>
+<li>dan masih banyak lagi</li>
+</ul>
+
+
+<h2>Instalasi MongoDB di Linux</h2>
+
+<p>Untuk menggunakan versi terbaru dari MongoDB silakan download di link official MongoDB nya <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#packages">mongodb.com</a>, kamu tinggal ikuti saja instruksi cara menginstallnya yang sudah di jelaskan di web tersebut.
+Tapi jika ingin menggunakan versi lama yang ada di repositori, kita bisa menginstallnya dengan perintah:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt install mongodb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Untuk memastikan MongoDB terinstall dengan benar silakan cek di terminal dengan mengetikan perintah berikut:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress  
-</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongo --version
+</span><span class='line'>mongod --version</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Selanjutnya, Install dependecy</p>
+<h2>Cara mengoperasikan MongoDB</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install bundler
-</span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Install theme default dari Octopress</p>
+<p>Menyalakan server MongoDB</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb start</span></code></pre></td></tr></table></div></figure>
 
 
-<!-- more -->
-
-
-<h3>Membuat post</h3>
+<p>Mematikan server MongoDB</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake "new_post[Judul dari post]"</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb stop</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Apabila di terminal muncul kata-kata <code>Creating new post: source/_posts/2017-11-02-judul-dari-post.markdown</code><br/>
-itu tandanya kamu sudah berhasil membuat post</p>
-
-<p>Untuk melihat hasil pembuatan post kita di browser caranya masukan perintah ini di terminal</p>
+<p>Menyalakan ulang server MongoDB</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb restart</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Selanjutnya akses di browser dengan alamat <code>http://localhost:4000</code><br/>
-untuk keluar dari mode preview tekan tombol Ctrl+c di keyboard</p>
-
-<h3>Deploy ke Github</h3>
-
-<p>Buat <a href="https://github.com/repositories/new">repository baru di Github</a> dan beri nama repo tersebut dengan format <code>username.github.io</code>, dimana <code>username</code> tersebut adalah user name Github kamu atau nama organisasi.<br/>
-Github menggunakan branch master sebagai public directory di web server, tapi di octopress ini kamu bekerja di branch source oleh karena itu kamu harus commit dan push konten hasil generate ke github ke branch master, Untuk itu octopress memiliki perintah untuk konfigurasi yang akan membantu kamu menangani semuanya itu.</p>
+<p>Melihat status server MongoDB</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Perintah tersebut akan memintamu memasukan alamat URL repo github kamu, tinggal pilih mau menggunakan SSH atau HTTPS, contoh saya menggunakan yang HTTPS <code>https://github.com/username/username.github.io</code>
-Lalu jalankan</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Jangan lupa untuk commit source dari blog kamu</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-</span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;pesan kamu&quot;</span>
-</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">source</span>
-</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb status</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -178,12 +158,12 @@ Lalu jalankan</p>
 
 
 
-<time class='entry-date' datetime='2017-11-16T15:33:08+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:33 pm</span></time>
+<time class='entry-date' datetime='2017-11-25T09:33:07+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:33 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/mongodb/'>mongodb</a>
   
 </span>
 
@@ -192,7 +172,7 @@ Lalu jalankan</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/" data-via="" data-counturl="http://dedehermawan.github.io/blog/2017/11/16/cara-membuat-blog-dengan-octopress/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dedehermawan.github.io/blog/2017/11/25/berkenalan-dengan-mongodb/" data-via="" data-counturl="http://dedehermawan.github.io/blog/2017/11/25/berkenalan-dengan-mongodb/" >Tweet</a>
   
   
   
@@ -201,8 +181,8 @@ Lalu jalankan</p>
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2017/11/20/membuat-aplikasi-dengan-ruby-on-rails/" title="Previous Post: Membuat aplikasi dengan ruby on rails">&laquo; Membuat aplikasi dengan ruby on rails</a>
       
-        <a class="basic-alignment right" href="/blog/2017/11/17/koneksi-ke-github-dengan-ssh/" title="Next Post: koneksi ke github dengan SSH">koneksi ke github dengan SSH &raquo;</a>
       
     </p>
   </footer>

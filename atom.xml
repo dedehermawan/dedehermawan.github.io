@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Catatanku]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-12-30T02:37:38+07:00</updated>
+  <updated>2018-07-02T13:38:59+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -14,11 +14,69 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Rails Authentication]]></title>
-    <link href="http://dedehermawan.github.io/blog/2017/12/30/rails-authentication/"/>
-    <updated>2017-12-30T02:05:03+07:00</updated>
-    <id>http://dedehermawan.github.io/blog/2017/12/30/rails-authentication</id>
-    <content type="html"><![CDATA[
+    <title type="html"><![CDATA[Berkenalan Dengan MongoDB]]></title>
+    <link href="http://dedehermawan.github.io/blog/2017/11/25/berkenalan-dengan-mongodb/"/>
+    <updated>2017-11-25T09:33:07+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2017/11/25/berkenalan-dengan-mongodb</id>
+    <content type="html"><![CDATA[<h2>Apasih MongoDB ?</h2>
+
+<p>MongoDB merupakan sebuah database yang memiliki konsep NoSQL. Istilah ini dapat diartikan secara awam dengan non relasional karena berbeda dengan MySQL yang merupakan RDBMS (<em>Relational DataBase Management System</em>).</p>
+
+<p>Untuk memulai berkenalan kamu terlebih dahulu harus mengetahui beberapa perbedaan yang mendasar antara MongoDB dengan RDBMS, diantaranya:</p>
+
+<ul>
+<li><em>Table</em> pada MongoDB dikenal dengan <em>Collections</em></li>
+<li><em>Rows</em> pada MongoDB dikenal dengan <em>Documents</em></li>
+<li>Setiap <em>documents</em> bisa berisi kolom yang berbeda dengan <em>documents</em> lainnya</li>
+<li>Sebuah <em>collections</em> dapat membuat setiap <em>documents</em> memiliki kolom yang sama dengan membuat parameter <em>capped</em> menjadi true saat pembuatan collection</li>
+<li><em>Query</em> yang digunakan oleh MongoDB tidak menggunakan bahasa query seperti SQL, tapi menggunakan Javascript. Bahkan Anda dapat membuat semacam <em>stored procedure</em> yang ditulis menggunakan Javascript</li>
+<li>Secara <em>default</em> setiap membuat <em>documents</em> baru, <strong>id</strong> dari <em>documents</em> tersebut akan tercipta otomatis. Jadi Anda tidak perlu membuat <strong>id</strong> sendiri jika membutuhkan <strong>id</strong></li>
+<li>dan masih banyak lagi</li>
+</ul>
+
+
+<h2>Instalasi MongoDB di Linux</h2>
+
+<p>Untuk menggunakan versi terbaru dari MongoDB silakan download di link official MongoDB nya <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#packages">mongodb.com</a>, kamu tinggal ikuti saja instruksi cara menginstallnya yang sudah di jelaskan di web tersebut.
+Tapi jika ingin menggunakan versi lama yang ada di repositori, kita bisa menginstallnya dengan perintah:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt install mongodb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Untuk memastikan MongoDB terinstall dengan benar silakan cek di terminal dengan mengetikan perintah berikut:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongo --version
+</span><span class='line'>mongod --version</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Cara mengoperasikan MongoDB</h2>
+
+<p>Menyalakan server MongoDB</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb start</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mematikan server MongoDB</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb stop</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Menyalakan ulang server MongoDB</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb restart</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Melihat status server MongoDB</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongodb status</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Octopress | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Octopress | Catatanku]]></title>
   <link href="http://dedehermawan.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2017-12-30T02:37:38+07:00</updated>
+  <updated>2018-07-02T13:38:59+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
