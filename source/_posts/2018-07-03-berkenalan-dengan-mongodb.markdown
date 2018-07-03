@@ -17,6 +17,7 @@ Untuk memulai berkenalan kamu terlebih dahulu harus mengetahui beberapa perbedaa
 * Query yang digunakan oleh MongoDB tidak menggunakan bahasa query seperti SQL, tapi menggunakan Javascript. Bahkan Anda dapat membuat semacam _stored procedure_ yang ditulis menggunakan Javascript
 * Secara default setiap membuat _documents_ baru, id dari _documents_ tersebut akan tercipta otomatis. Jadi Anda tidak perlu membuat id sendiri jika membutuhkan id
 * dan masih banyak lagi
+<!--more-->
 ## Instalasi MongoDB
 Untuk proses instalasi sudah dijelaskan secara jelas di official [web MongoDB nya](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)  
 Apabila proses instalasi sudah selesai selanjutnya cek apakah MongoDB sudah terpasang dengan benar atau belum dengan mengetikan perintah di bawah ini:
