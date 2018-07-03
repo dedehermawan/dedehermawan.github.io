@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mongodb | My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/blog/categories/mongodb/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2018-07-03T15:10:38+07:00</updated>
+  <updated>2018-07-03T15:19:27+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -31,7 +31,12 @@
 <li>Sebuah <em>collections</em> dapat membuat setiap <em>documents</em> memiliki kolom yang sama dengan membuat parameter capped menjadi true saat pembuatan <em>collections</em></li>
 <li>Query yang digunakan oleh MongoDB tidak menggunakan bahasa query seperti SQL, tapi menggunakan Javascript. Bahkan Anda dapat membuat semacam <em>stored procedure</em> yang ditulis menggunakan Javascript</li>
 <li>Secara default setiap membuat <em>documents</em> baru, id dari <em>documents</em> tersebut akan tercipta otomatis. Jadi Anda tidak perlu membuat id sendiri jika membutuhkan id</li>
-<li>dan masih banyak lagi
+<li>dan masih banyak lagi</li>
+</ul>
+
+
+<!--more-->
+
 
 <h2>Instalasi MongoDB</h2>
 
@@ -41,9 +46,7 @@ Apabila proses instalasi sudah selesai selanjutnya cek apakah MongoDB sudah terp
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>mongo &ndash;version
 </span><span class='line'>mongod &ndash;version</span></code></pre></td></tr></table></div></figure>
-<img src="/images/mongo-version.png" title="&lsquo;image&rsquo; &lsquo;images&rsquo;" ></p></li>
-</ul>
-
+<img src="/images/mongo-version.png" title="&lsquo;image&rsquo; &lsquo;images&rsquo;" ></p>
 
 <p>apabila muncul tampilan seperti gambar diatas berarti MongoDB sudah berhasil terpasang di <em>system</em> kita</p>
 

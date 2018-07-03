@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2018-07-03T15:10:38+07:00</updated>
+  <updated>2018-07-03T15:19:27+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -31,14 +31,17 @@
 <li>Sebuah <em>collections</em> dapat membuat setiap <em>documents</em> memiliki kolom yang sama dengan membuat parameter capped menjadi true saat pembuatan <em>collections</em></li>
 <li>Query yang digunakan oleh MongoDB tidak menggunakan bahasa query seperti SQL, tapi menggunakan Javascript. Bahkan Anda dapat membuat semacam <em>stored procedure</em> yang ditulis menggunakan Javascript</li>
 <li>Secara default setiap membuat <em>documents</em> baru, id dari <em>documents</em> tersebut akan tercipta otomatis. Jadi Anda tidak perlu membuat id sendiri jika membutuhkan id</li>
-<li>dan masih banyak lagi
+<li>dan masih banyak lagi</li>
+</ul>
+
+
+<!--more-->
+
 
 <h2>Instalasi MongoDB</h2>
 
 <p>Untuk proses instalasi sudah dijelaskan secara jelas di official <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">web MongoDB nya</a><br/>
-Apabila proses instalasi sudah selesai selanjutnya cek apakah MongoDB sudah terpasang dengan benar atau belum dengan mengetikan perintah di bawah ini:</p></li>
-</ul>
-
+Apabila proses instalasi sudah selesai selanjutnya cek apakah MongoDB sudah terpasang dengan benar atau belum dengan mengetikan perintah di bawah ini:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

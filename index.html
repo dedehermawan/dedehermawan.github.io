@@ -100,127 +100,16 @@
 <li>Sebuah <em>collections</em> dapat membuat setiap <em>documents</em> memiliki kolom yang sama dengan membuat parameter capped menjadi true saat pembuatan <em>collections</em></li>
 <li>Query yang digunakan oleh MongoDB tidak menggunakan bahasa query seperti SQL, tapi menggunakan Javascript. Bahkan Anda dapat membuat semacam <em>stored procedure</em> yang ditulis menggunakan Javascript</li>
 <li>Secara default setiap membuat <em>documents</em> baru, id dari <em>documents</em> tersebut akan tercipta otomatis. Jadi Anda tidak perlu membuat id sendiri jika membutuhkan id</li>
-<li>dan masih banyak lagi
-
-<h2>Instalasi MongoDB</h2>
-
-<p>Untuk proses instalasi sudah dijelaskan secara jelas di official <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">web MongoDB nya</a><br/>
-Apabila proses instalasi sudah selesai selanjutnya cek apakah MongoDB sudah terpasang dengan benar atau belum dengan mengetikan perintah di bawah ini:</p></li>
+<li>dan masih banyak lagi</li>
 </ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mongo --version
-</span><span class='line'>mongod --version</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="/images/mongo-version.png" title="image" alt="images"></p>
-
-<p>apabila muncul tampilan seperti gambar diatas berarti MongoDB sudah berhasil terpasang di <em>system</em> kita</p>
-
-<h2>Cara mengoperasikan MongoDB</h2>
-
-<p>Menyalakan server MongoDB</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongod start</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Mematikan server MongoDB</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongod stop</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Menyalakan ulang server MongoDB</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongod restart</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Melihat status server MongoDB</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo service mongod status</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Mengakses server MongoDB</h2>
-
-<p>Jalankan <strong>mongo</strong> <em>shell</em> di mesin yang sama dengan <strong>mongod</strong>. Gunakan perintah <strong>&ndash;host</strong> untuk spesifikasi alamat localhost dan port dari <strong>mongod</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mongo --host 127.0.0.1:27017</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Secara <em>default</em> database ketika kita masuk ke server MongoDB namanya adalah <em>test</em>
-<img src="/images/sintaks-db.png" title="image" alt="images"><br/>
-Berikut penjelasan gambar diatas</p>
-
-<ul>
-<li><strong>db</strong>, untuk melihat database yang sedang aktif</li>
-<li><strong>show dbs</strong>, untuk melihat daftar database</li>
-<li><strong>use &lt;nama-database&gt;</strong> untuk membuat database baru, (database belum tersimpan karena data masih kosong)</li>
-</ul>
-
-
-<p>Sekarang ayo kita membuat sebuah koleksi(<em>collections</em>). Koleksi berisi kumpulan dokumen atau data dalam bentuk JSON, kalau di SQL kita menyebutnya dengan <em>record</em>/baris<br/>
-Koleksi bisa di buat dengan perintah:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.createCollections("nama_koleksi")</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Atau bisa juga otomatis terbuat pada saat <em>insert</em> data</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.&lt;koleksi>.insert(&lt;data>)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>atau</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.&lt;koleksi>.save(&lt;data>)</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>koleksi adalah nama koleksi yang akan dibuat</li>
-<li>data adalah data yang akan disimpan ke dalam koleksi dengan format JSON</li>
-</ul>
-
-
-<p>Sebagai contoh kita akan membuat koleksi dengan nama buku, <strong>db.koleksi.insert</strong>
-<img src="/images/collection-insert.png" title="image" alt="images"><br/>
-Menampilkan semua data pada koleksi, <strong>db.koleksi.find().pretty()</strong>, pretty() berfungsi untuk mempercantik format tampilan JSON supaya lebih mudah di baca
-<img src="/images/collection-find.png" title="image" alt="images"><br/>
-Menampilkan data pada koleksi berdasarkan kondisi/query, <strong>db.koleksi.find({query}).pretty()</strong>
-<img src="/images/collection-find-kondisi.png" title="image" alt="images"><br/>
-Mengubah data menggunakan perintah <em>update</em>, <strong>db.koleksi.update({query}, {data-baru})</strong>
-<img src="/images/collection-update.png" title="image" alt="images"><br/>
-Diatas kita mengupdate buku dengan judul &ldquo;Belajar membaca&rdquo; ditambahkan harga senilai 15000, sehingga apabila kita tampilkan ulang data dengan judul &ldquo;Belajar membaca&rdquo; akan memiliki harga seperti yang di insertkan</p>
-
-<p><img src="/images/collection-find-update.png" title="image" alt="images"><br/>
-Untuk menghapus koleksi gunakan perintah, <strong>db.koleksi.remove({query})</strong>
-<img src="/images/collection-hapus.png" title="image" alt="images"><br/>
-Apabila kita ingin menghapus semua data dalam koleksi, kita kosongkan saja nilai query-nya</p>
-
-<h2>Menghapus database dan koleksi</h2>
-
-<p>menghapus koleksi</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.koleksi.drop();</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Menghapus database</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>db.dropDatabase();</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Mungkin cukup sekian dulu perkenalan dengan MongoDB nya, semoga bermanfaat.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2017/11/23/berkenalan-dengan-mongodb/">Read on &rarr;</a>
+    </footer>
   
 
 
