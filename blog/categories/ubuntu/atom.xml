@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ubuntu | My Octopress Blog]]></title>
+  <link href="http://dedehermawan.github.io/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://dedehermawan.github.io/"/>
+  <updated>2018-07-12T10:39:27+07:00</updated>
+  <id>http://dedehermawan.github.io/</id>
+  <author>
+    <name><![CDATA[Dede Hermawan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cara Install Aplikasi Di Ubuntu]]></title>
+    <link href="http://dedehermawan.github.io/blog/2017/08/24/cara-install-aplikasi-di-ubuntu/"/>
+    <updated>2017-08-24T09:44:20+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2017/08/24/cara-install-aplikasi-di-ubuntu</id>
+    <content type="html"><![CDATA[<h3>.deb</h3>
+
+<p>Untuk menginstall file <strong>.deb</strong> melalui terminal console lakukan langkah-langkah berikut:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo dpkg -i nama-file.deb</span></code></pre></td></tr></table></div></figure>
+Atau kamu bisa double-click file tersebut dan akan terbuka <strong>Ubuntu Software Center</strong>, maka kamu bisa install dengan mengklik tombol <strong>Install</strong></p>
+
+<h3>tar.gz</h3>
+
+<p>Untuk menginstall file <strong>tar.gz</strong> melalui terminal console lakukan langkah-langkah berikut:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tar zxvf nama-file.tar.gz</span></code></pre></td></tr></table></div></figure>
+Terus masuk ke direktori tempat file hasil ekstrak kemudian baca file README atau INSTALL file tersebut sebagai petunjuk utama instalasi file.
+ <!-- more -->
+Tapi secara umum, sebagian besar instalasi paket tarbal (tar.gz atau tar.bz2) bisa melalui langkah-langkah berikut (lewat terminal)
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd folder-ekstrak
+</span><span class='line'>./configure</span></code></pre></td></tr></table></div></figure>
+pastikan saat ini tidak ada masalah. Jika ada paket-paket lain yg harus diinstal, instal terlebih dulu paket-paket yg dibutuhkan.<br/>
+Lalu lakukan kompilasi
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make</span></code></pre></td></tr></table></div></figure>
+Lalu install(sebagai root)
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>su&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>make install&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+</feed>
