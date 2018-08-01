@@ -4,7 +4,7 @@
   <title><![CDATA[Dede Hermawan]]></title>
   <link href="http://dedehermawan.github.io/atom.xml" rel="self"/>
   <link href="http://dedehermawan.github.io/"/>
-  <updated>2018-07-26T14:22:33+07:00</updated>
+  <updated>2018-08-01T11:26:14+07:00</updated>
   <id>http://dedehermawan.github.io/</id>
   <author>
     <name><![CDATA[Dede Hermawan]]></name>
@@ -12,6 +12,253 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Autentikasi Di Rails Dengan JWT]]></title>
+    <link href="http://dedehermawan.github.io/blog/2018/07/27/autentikasi-di-rails-dengan-jwt/"/>
+    <updated>2018-07-27T08:17:06+07:00</updated>
+    <id>http://dedehermawan.github.io/blog/2018/07/27/autentikasi-di-rails-dengan-jwt</id>
+    <content type="html"><![CDATA[<p>Sudah lama ni saya tidak update blog saya ini, ya mungkin karena saya tidak pandai dalam hal menulis blog sih hhe..</p>
+
+<p>Oke untuk sekarang ini saya akan mencoba menulis tentang membuat aplikasi web berbasis <strong>api</strong> menggunakan rails. Disini saya akan sekaligus membuat aplikasi api terkait autentikasi menggunakan gem <a href="https://jwt.io">JWT</a>.<br/>
+Oke langsung saja kita membuat proyek rails app nya</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new auth_jwt --api -T -d postgresql</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setelah proyek selesai di generate langsung saja masuk ke direktori app tersebut &ldquo;<strong>auth_jwt</strong>&rdquo;.</p>
+
+<p>Selanjutnya  kita buat model <strong>User</strong> untuk kepentingan autentikasi, disini kita gunakan atribut email dan password _digest sebagai dasar dari model User</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails g model user email password_digest
+</span><span class='line'>rake db:migrate</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Validation</h2>
+
+<p>Untuk proses create user kita tambahkan validasi pada model <strong>app/model/user.rb</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:email</span>
+</span><span class='line'>  <span class="n">validates_uniqueness_of</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">validates_format_of</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">with</span><span class="p">:</span> <span class="sr">/@/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Hash password</h2>
+
+<p>Untuk hash password kita gunakan gem &lsquo;<strong>bcrypt</strong>&rsquo;, silakan kamu tambahkan gem &lsquo;bcrypt&rsquo; di file <strong>Gemfile</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;bcrypt&#39;</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>lalu tambahkan sintak dibawah ini pada <strong>app/model/user.rb</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+</span><span class='line'>  <span class="n">has_secure_password</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Supaya format email berupa huruf kecil semua dan menghilangkan spasi pada email, kita buat <em>callback</em> method di <strong>app/model/user.rb</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="n">before_save</span> <span class="ss">:downcase_email</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">downcase_email</span>
+</span><span class='line'>    <span class="nb">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>User create</h2>
+
+<p>Sekarang kita akan buat endpoint untuk method user create</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails g controller users</span></code></pre></td></tr></table></div></figure>
+
+
+<p>tambahkan sintak di bawah ini di <strong>config/routes.rb</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">resources</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="ss">:create</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Selanjutnya kita buat method create di <strong>app/controllers/users_controller.rb</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">user_params</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="p">{</span><span class="ss">status</span><span class="p">:</span> <span class="s1">&#39;User created successfully&#39;</span><span class="p">},</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:created</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="p">{</span><span class="ss">errors</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">full_messages</span><span class="p">},</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:bad_request</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_params</span>
+</span><span class='line'>  <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:password_confirmation</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sekarang coba kamu buat user dengan mengirimkan request <strong>POST</strong> ke alamat <a href="http://localhost:3000/users">http://localhost:3000/users</a> menggunakan curl di terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -d '{"user": {"email": "test@email.com", "password": "12345", "password_confirmation": "12345"}}' -H "Content-Type: application/json" -X POST http://localhost:3000/users</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Jika respon yang dihasilkan adalah seperti dibawah ini, berarti proses create user kamu berhasil</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{"status":"User created successfully"}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Confirmation</h2>
+
+<p>Disini kita akan membuat proses konfirmasi email mungkin tidak terlalu kompleks tetapi bisa mewakili proses konfirmasi itu sendiri, proses konfirmasi ini di perlukan apabila waktu mau login tetapi email belum di verifikasi maka user tidak akan bisa login.</p>
+
+<p>Oke pertama-tama kita buat migration untuk menambahkan atribut pada model user / field pada tabel users</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails g migration add_confirmation_email_to_users confirmation_token confirmed_at:date confirmation_sent_at:date
+</span><span class='line'>rake db:migrate</span></code></pre></td></tr></table></div></figure>
+
+
+<p>tambahkan <em>callback</em> method <strong>generate_confirmation_instructions</strong> di <strong>app/model/user.rb</strong>, untuk menggenerate berupa string random pada field confirmation_token dan menggenerate waktu pada saat user itu di create pada field confirmation_sent_at.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="n">before_create</span> <span class="ss">:generate_confirmation_instructions</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">generate_confirmation_instructions</span>
+</span><span class='line'>    <span class="nb">self</span><span class="o">.</span><span class="n">confirmation_token</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">self</span><span class="o">.</span><span class="n">confirmation_sent_at</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">utc</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sekarang kita tambahkan routes <strong>confirm</strong> pada <strong>config/routes</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">resources</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="ss">:create</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">collection</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">post</span> <span class="s1">&#39;confirm&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lalu kita buat method <strong>confirm</strong> di <strong>users_controller.rb</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">confirm</span>
+</span><span class='line'>  <span class="n">token</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:token</span><span class="o">].</span><span class="n">to_s</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="ss">confirmation_token</span><span class="p">:</span> <span class="n">token</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">present</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="o">.</span><span class="n">confirmation_token_valid?</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">mark_as_confirmed!</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="p">{</span><span class="ss">status</span><span class="p">:</span> <span class="s1">&#39;User confirmed successfully&#39;</span><span class="p">},</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:ok</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="p">{</span><span class="ss">status</span><span class="p">:</span> <span class="s1">&#39;Invalid token&#39;</span><span class="p">},</span> <span class="ss">status</span><span class="p">:</span> <span class="ss">:not_found</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Oke sekarang kita coba proses confirm di atas dengan mengirimkan POST ke url <strong>localhost:3000/users/confirm</strong> dengan di sertakan data <strong>token</strong> berdasarkan isi dari field <strong>confirmation_token</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -d '{"token" = "1c2c2aea02e3b03fd0e1"}' -H "Content-Type: application/json" -X POST http://localhost:3000/users/confirm</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Apabila muncul keterangan seperti dibawah ini berarti proses konfirmasi berhasil</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{"status":"User confirmed successfully"}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Berkenalan Dengan MongoDB]]></title>
